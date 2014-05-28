@@ -1,0 +1,23 @@
+if (!$id) {
+    $entity = new {{ entity }};
+} else {
+    $entity = $this->getRepository()->find($id);
+}
+
+$form = $this->createForm(new {{ formClass }}(), $entity);
+$form->handleRequest($request);
+if ($form->isValid()) {
+    $em = $this->getDoctrine()->getManager();
+    if (!$entity->getId()) {
+        $em->persist($entity);
+    }
+
+    return $this->redirect($this->generateUrl('{{ indexRoute }}'));
+}
+
+return $this->render(
+    '{{ targetBundleName }}:{{ entity }}:edit.html.twig',
+    array(
+        'form' => $form->createView()
+    )
+);

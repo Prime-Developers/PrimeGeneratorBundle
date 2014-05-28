@@ -1,0 +1,7 @@
+$entity = $this->getRepository()->find($id);
+$em = $this->getDoctrine()->getManager();
+
+$em->remove($entity);
+$em->flush();
+
+return $this->redirect($this->generateUrl('{{ indexRoute }}'));

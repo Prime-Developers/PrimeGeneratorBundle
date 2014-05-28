@@ -1,0 +1,20 @@
+services:
+    prime.crud_command_validator:
+        class: Prime\GeneratorBundle\Validator\Validator
+        arguments: [@kernel]
+
+    prime.crud_controller_generator:
+        class: Prime\GeneratorBundle\Generator\ControllerGenerator
+        arguments: [@kernel, @filesystem, @twig]
+
+    prime.crud_route_generator:
+        class: Prime\GeneratorBundle\Generator\RouteGenerator
+        arguments: [@kernel, @filesystem]
+
+    prime.crud_view_generator:
+        class: Prime\GeneratorBundle\Generator\ViewGenerator
+        arguments: [@kernel, @twig, @filesystem]
+
+    prime.crud_form_generator:
+        class: Prime\GeneratorBundle\Generator\FormTypeGenerator
+        arguments: [@kernel, @filesystem, @doctrine]

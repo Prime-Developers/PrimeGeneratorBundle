@@ -1,0 +1,9 @@
+$repo = $this->getRepository();
+$rows = $repo->findAll();
+
+return $this->render(
+    '{{ targetBundleName }}:{{ entity }}:index.html.twig',
+    array(
+        'rows' => $rows
+    )
+);
